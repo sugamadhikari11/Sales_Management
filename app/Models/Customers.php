@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class Customers extends Model
 {
     protected $fillable = ['customer_name', 'PAN_VAT', 'address'];
 
@@ -12,4 +13,5 @@ class Customer extends Model
     {
         return $this->hasMany(Sale::class);
     }
+    use HasFactory;
 }

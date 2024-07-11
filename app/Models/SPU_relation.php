@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class SPU_relation extends Model
@@ -12,4 +13,5 @@ class SPU_relation extends Model
     {
         return $this->belongsTo(SPU_relation::class);
     }
+    use HasFactory;
 }

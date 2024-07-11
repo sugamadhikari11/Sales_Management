@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Sale extends Model
@@ -10,11 +11,12 @@ class Sale extends Model
 
     public function customer()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(Customers::class);
     }
 
     public function product()
     {
         return $this->belongsTo(Product::class);
     }
+    use HasFactory;
 }
