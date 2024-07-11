@@ -1,10 +1,8 @@
-<!-- resources/views/welcome.blade.php -->
+<!-- resources/views/settings.blade.php -->
 @extends('layouts.app')
 
 @section('content')
-    <div class="jumbotron">
-        <h1 class="display-4">Welcome to settings</h1>
-        <p class="lead">This is the setting page content.</p>
-        <hr class="my-4">
-    </div>
+    <section class="home">
+        <div class="text">Settings Page</div>
+    </section>
 @endsection
