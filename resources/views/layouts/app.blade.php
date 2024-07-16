@@ -82,9 +82,9 @@
                         </li>
 
                         <li class="nav-lik">
-                            <a href="#">
+                            <a href="{{ url('/customers') }}">
                                 <i class='bx bx-pie-chart-alt icon' ></i>
-                                <span class="text nav-text">Analytics</span>
+                                <span class="text nav-text">Customers</span>
                             </a>
                         </li>
 

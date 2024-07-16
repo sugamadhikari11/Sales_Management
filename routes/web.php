@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CustomerController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,3 +18,8 @@ Route::get('/products', [ProductController::class, 'index'])->name('products.ind
 
 // Route to handle the form submission for adding a new product
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+
+
+Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
+
+Route::post('/customers', [CustomerController::class, 'store'])->name('customers.store');
