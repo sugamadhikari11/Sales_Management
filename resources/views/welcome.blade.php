@@ -42,4 +42,18 @@
         </div>
     </div>
 </section>
+<style>
+.card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-title {
+        font-weight: bold;
+    }
+
+    .card-text {
+        color: #333;
+    }
+    </style>
 @endsection

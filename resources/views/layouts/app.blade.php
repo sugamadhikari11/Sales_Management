@@ -14,23 +14,9 @@
 
         <style>
     .card {
-        background-color: white;
         border-radius: 15px;
         transition: transform 0.2s;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .card:hover {
-        transform: scale(1.05);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    }
-
-    .card-title {
-        font-weight: bold;
-    }
-
-    .card-text {
-        color: #333;
     }
 </style>
 
@@ -98,7 +84,7 @@
 
                         <li class="nav-lik">
                             <a href="{{ route('settings') }}">
-                                <i class='bx bx-wallet icon' ></i>
+                                <i class='bx bx-cog'></i> 
                                 <span class="text nav-text">Settings</span>
                             </a>
                         </li>
