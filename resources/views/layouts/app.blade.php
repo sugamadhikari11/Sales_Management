@@ -75,7 +75,7 @@
                         </li>
 
                         <li class="nav-lik">
-                            <a href="{{ url('/customers') }}">
+                            <a href="{{ route('customers.index') }}">
                             <i class='bx bx-user icon'></i>
                                 <span class="text nav-text">Customers</span>
                             </a>
