@@ -75,18 +75,19 @@
                         </li>
 
                         <li class="nav-lik">
+                            <a href="{{ url('/customers') }}">
+                            <i class='bx bx-user icon'></i>
+                                <span class="text nav-text">Customers</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-lik">
                             <a href="#">
                                 <i class='bx bx-bell icon'></i>
                                 <span class="text nav-text">Notifications</span>
                             </a>
                         </li>
-
-                        <li class="nav-lik">
-                            <a href="{{ url('/customers') }}">
-                                <i class='bx bx-pie-chart-alt icon' ></i>
-                                <span class="text nav-text">Customers</span>
-                            </a>
-                        </li>
+                        
 
                         <li class="nav-lik">
                             <a href="#">
