@@ -84,7 +84,7 @@
 
                         <li class="nav-lik">
                             <a href="{{ route('settings') }}">
-                                <i class='bx bx-cog'></i> 
+                                <i class='bx bx-cog icon'></i> 
                                 <span class="text nav-text">Settings</span>
                             </a>
                         </li>
