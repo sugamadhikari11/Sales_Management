@@ -68,7 +68,7 @@
                         </li>
 
                         <li class="nav-lik">
-                            <a href="#">
+                            <a href="{{ route('products.index') }}">
                             <i class='bx bx-package icon'> </i>
                                 <span class="text nav-text">Products</span>
                             </a>
