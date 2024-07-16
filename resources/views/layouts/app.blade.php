@@ -69,8 +69,8 @@
 
                         <li class="nav-lik">
                             <a href="#">
-                                <i class='bx bx-bar-chart-alt-2 icon' ></i>
-                                <span class="text nav-text">Revenue</span>
+                            <i class='bx bx-package icon'> </i>
+                                <span class="text nav-text">Products</span>
                             </a>
                         </li>
 
