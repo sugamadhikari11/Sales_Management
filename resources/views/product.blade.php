@@ -12,17 +12,28 @@
                         @if ($products->isEmpty())
                             <p class="text-center">No products available.</p>
                         @else
-                            <ul class="list-group">
-                                @foreach ($products as $product)
-                                    <li class="list-group-item">
-                                        <h5>{{ $product->product_name }}</h5>
-                                        <p><strong>BN:</strong> {{ $product->BN }}</p>
-                                        <p><strong>Expiry Date:</strong> {{ $product->exp_date }}</p>
-                                        <p><strong>MOU:</strong> {{ $product->MOU }}</p>
-                                        <p><strong>Stock Balance:</strong> {{ $product->stock_balance }}</p>
-                                    </li>
-                                @endforeach
-                            </ul>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Product Name</th>
+                                        <th scope="col">BN</th>
+                                        <th scope="col">Expiry Date</th>
+                                        <th scope="col">MOU</th>
+                                        <th scope="col">Stock Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($products as $product)
+                                        <tr>
+                                            <td>{{ $product->product_name }}</td>
+                                            <td>{{ $product->BN }}</td>
+                                            <td>{{ $product->exp_date }}</td>
+                                            <td>{{ $product->MOU }}</td>
+                                            <td>{{ $product->stock_balance }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         @endif
                     </div>
                 </div>
