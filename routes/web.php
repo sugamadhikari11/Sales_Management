@@ -13,11 +13,7 @@ Route::get('/settings', function () {
 })->name('settings');
 
 
-// Route to display the product page (assuming 'product' is the name of the page)
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-
-// Route to handle the form submission for adding a new product
-Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+Route::resource('products', ProductController::class)->only(['index', 'store', 'edit', 'update', 'destroy']);
 
 
 Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');

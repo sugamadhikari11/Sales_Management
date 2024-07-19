@@ -30,18 +30,50 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         // Validate the incoming request data
-        $validatedData = $request->validate([
-            'product_name' => 'required|string|max:255',
-            'BN' => 'required|string',
+        $request->validate([
+            'product_name' => 'required',
+            'BN' => 'required',
             'exp_date' => 'required|date',
-            'MOU' => 'required|string',
-            'stock_balance' => 'required|integer',
+            'Stock_Balance' => 'numeric',
+            'Rate' => 'required|numeric',
+            'MOU' => 'required',
         ]);
-
+        
         // Create a new product using the validated data
-        Product::create($validatedData);
+        Product::create($request->all());
 
         // Redirect back to the product list page with a success message
-        return redirect()->route('products.index')->with('success', 'Product created successfully');
+        return redirect()->route('products.index')->with('success', 'Product added successfully.');
+    }
+
+    public function edit($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('products.edit', compact('product'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'product_name' => 'required',
+            'BN' => 'required',
+            'exp_date' => 'required|date',
+            'Stock_Balance' => 'numeric',
+            'Rate' => 'required|numeric',
+            'MOU' => 'required',
+        ]);
+
+        $product = Product::findOrFail($id);
+        $product->update($request->all());
+
+        return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+    }
+
+    public function destroy($id)
+    {
+        $product = Product::findOrFail($id);
+        $product->delete();
+
+        return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
     }
 }
