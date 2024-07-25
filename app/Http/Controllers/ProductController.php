@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Carbon\Carbon;
 
 class ProductController extends Controller
 {
@@ -12,13 +13,38 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Fetch all products from the database
-        $products = Product::all();
+        // Fetch the search query from the request
+        $query = $request->input('query');
+
+        // Check if a search query is provided
+        if ($query) {
+            // Filter products based on the search query
+            $products = Product::where('product_name', 'LIKE', "%{$query}%")
+                        ->orWhere('BN', 'LIKE', "%{$query}%")
+                        ->get();
+        } else {
+            // Fetch all products if no search query is provided
+            $products = Product::all();
+        }
+
+        // Categorize products as "Normal" or "Expired"
+        $currentDate = Carbon::now();
+        $normalProducts = $products->filter(function ($product) use ($currentDate) {
+            return Carbon::parse($product->exp_date)->gte($currentDate);
+        });
+
+        $expiredProducts = $products->filter(function ($product) use ($currentDate) {
+            return Carbon::parse($product->exp_date)->lt($currentDate);
+        });
 
         // Return the view with the products data
-        return view('product', ['products' => $products]);
+        return view('product', [
+            'normalProducts' => $normalProducts,
+            'expiredProducts' => $expiredProducts,
+            'query' => $query
+        ]);
     }
 
     /**
