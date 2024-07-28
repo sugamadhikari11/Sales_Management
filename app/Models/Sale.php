@@ -24,6 +24,6 @@ class Sale extends Model
 
     public function customer()
     {
-        return $this->belongsTo(Customers::class);
+        return $this->belongsTo(Customer::class);
     }
 }
