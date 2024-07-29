@@ -22,7 +22,6 @@
                                         <th scope="col">Quantity</th>
                                         <th scope="col">Payment Status</th>
                                         <th scope="col">VAT</th>
-                                        <th scope="col">Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -31,11 +30,10 @@
                                             <td>{{ $customer->customer_name }}</td>
                                             <td>{{ $customer->PAN_VAT }}</td>
                                             <td>{{ $customer->address }}</td>
-                                            <td>{{ $customer->product_purchased }}</td>
+                                            <td>{{ $customer->product_name }}</td>
                                             <td>{{ $customer->quantity }}</td>
                                             <td>{{ $customer->payment }}</td>
                                             <td>{{ $customer->VAT }}</td>
-                                            <td>{{ $customer->date }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -67,8 +65,8 @@
                                 <input type="text" id="address" name="address" class="form-control" required>
                             </div>
                             <div class="form-group mt-3">
-                                <label for="product_purchased">Product Purchased</label>
-                                <select id="product_purchased" name="product_purchased" class="form-control" required>
+                                <label for="product_id">Product Purchased</label>
+                                <select id="product_id" name="product_id" class="form-control" required>
                                     @foreach ($products as $product)
                                         <option value="{{ $product->id }}">{{ $product->product_name }}</option>
                                     @endforeach
@@ -93,10 +91,6 @@
                             <div class="form-group mt-3">
                                 <label for="VAT">VAT (%)</label>
                                 <input type="number" id="VAT" name="VAT" class="form-control" required>
-                            </div>
-                            <div class="form-group mt-3">
-                                <label for="date">Date</label>
-                                <input type="date" id="date" name="date" class="form-control" required>
                             </div>
                             <button type="submit" class="btn btn-primary mt-4">Add Customer</button>
                         </form>

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -22,27 +21,28 @@ class CustomerController extends Controller
             'customer_name' => 'required',
             'PAN_VAT' => 'required',
             'address' => 'required',
-            'product_purchased' => 'required|exists:products,id',
+            'product_id' => 'required|exists:products,id',  // Keep this to validate product existence
             'quantity' => 'required|integer|min:1',
             'payment' => 'required|string',
-            'VAT' => 'required|numeric|min:0'
+            'VAT' => 'required|numeric|min:0',
         ]);
 
-        $product = Product::find($validatedData['product_purchased']);
+        $product = Product::find($validatedData['product_id']);
         $quantity = $validatedData['quantity'];
         $rate = $product->Rate;
         $amount = $rate * $quantity;
         $VAT = $validatedData['VAT'];
         $total_amount = $amount + ($amount * ($VAT / 100));
+        $remarks = $validatedData['payment'];
 
         $customer = Customer::create([
             'customer_name' => $validatedData['customer_name'],
             'PAN_VAT' => $validatedData['PAN_VAT'],
             'address' => $validatedData['address'],
-            'product_purchased' => $product->id,
+            'product_name' => $product->product_name,  // Store product name directly
             'quantity' => $quantity,
             'payment' => $validatedData['payment'],
-            'VAT' => $VAT
+            'VAT' => $VAT,
         ]);
 
         Sale::create([
@@ -50,7 +50,7 @@ class CustomerController extends Controller
             'product_id' => $product->id,
             'amount' => $amount,
             'total_amount' => $total_amount,
-            'remarks' => 'New sale'
+            'remarks' => $remarks,
         ]);
 
         return redirect()->route('customers.index')->with('success', 'Customer and sales created successfully');

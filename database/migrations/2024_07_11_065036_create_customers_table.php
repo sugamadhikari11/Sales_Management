@@ -13,13 +13,11 @@ class CreateCustomersTable extends Migration
             $table->string('customer_name');
             $table->string('PAN_VAT');
             $table->string('address');
-            $table->unsignedBigInteger('product_purchased');
+            $table->string('product_name'); 
             $table->integer('quantity');
-            $table->string('payment');  // Change this to string
+            $table->string('payment');
             $table->decimal('VAT', 8, 2);
             $table->timestamps();
-            
-            $table->foreign('product_purchased')->references('id')->on('products');
         });
     }
 
