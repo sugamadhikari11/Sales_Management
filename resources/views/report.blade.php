@@ -24,7 +24,7 @@
 
     <!-- Summary Statistics -->
     <div class="mb-4">
-        <h4>Total Sales: ${{ number_format($totalSalesAmount, 2) }}</h4>
+        <h4>Total Sales: RS {{ number_format($totalSalesAmount, 2) }}</h4>
         <p>Most Sales Month: {{ $mostSalesMonth ? Carbon\Carbon::parse($mostSalesMonth)->format('F Y') : 'N/A' }}</p>
         <p>Least Sales Month: {{ $leastSalesMonth ? Carbon\Carbon::parse($leastSalesMonth)->format('F Y') : 'N/A' }}</p>
     </div>
@@ -36,6 +36,7 @@
                 <th scope="col">Customer Name</th>
                 <th scope="col">Product Name</th>
                 <th scope="col">Quantity</th>
+                <th scope="col">VAT</th>
                 <th scope="col">Amount</th>
                 <th scope="col">Total Amount</th>
                 <th scope="col">Date</th>
@@ -48,8 +49,9 @@
                     <td>{{ $sale->customer->customer_name }}</td>
                     <td>{{ $sale->product->product_name }}</td>
                     <td>{{ $sale->customer->quantity }}</td>
-                    <td>{{ $sale->amount }}</td>
-                    <td>{{ $sale->total_amount }}</td>
+                    <td>{{ $sale->customer->VAT}}
+                    <td>RS {{ $sale->amount }}</td>
+                    <td>RS {{ $sale->total_amount }}</td>
                     <td>{{ $sale->created_at->format('Y-m-d') }}</td>
                     <td>{{ $sale->remarks }}</td>
                 </tr>

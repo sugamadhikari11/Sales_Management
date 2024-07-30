@@ -68,7 +68,11 @@
                                 <label for="product_id">Product Purchased</label>
                                 <select id="product_id" name="product_id" class="form-control" required>
                                     @foreach ($products as $product)
-                                        <option value="{{ $product->id }}">{{ $product->product_name }}</option>
+                                        @if($product->exp_date >= now())
+                                            <option value="{{ $product->id }}">
+                                                {{ $product->product_name }} (Batch No: {{ $product->BN }})
+                                            </option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
@@ -76,7 +80,9 @@
                                 <label for="MOU">MOU</label>
                                 <select id="MOU" name="MOU" class="form-control" required>
                                     @foreach ($products as $product)
-                                        <option value="{{ $product->MOU }}">{{ $product->MOU }}</option>
+                                        @if($product->exp_date >= now())
+                                            <option value="{{ $product->MOU }}">{{ $product->MOU }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
@@ -86,7 +92,10 @@
                             </div>
                             <div class="form-group mt-3">
                                 <label for="payment">Payment Status</label>
-                                <input type="text" id="payment" name="payment" class="form-control" required>
+                                <select id="payment" name="payment" class="form-control" required>
+                                    <option value="Paid">Paid</option>
+                                    <option value="Pending">Pending</option>
+                                </select>
                             </div>
                             <div class="form-group mt-3">
                                 <label for="VAT">VAT (%)</label>
