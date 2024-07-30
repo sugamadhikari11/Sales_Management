@@ -89,9 +89,9 @@
                             </li>
 
                             <li class="nav-lik">
-                                <a href="#">
-                                    <i class='bx bx-bell icon'></i>
-                                    <span class="text nav-text">Notifications</span>
+                                <a href="{{route('report')}}">
+                                    <i class='bx bx-file icon'></i>
+                                    <span class="text nav-text">Report</span>
                                 </a>
                             </li>
                             

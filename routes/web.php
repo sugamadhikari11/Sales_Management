@@ -12,6 +12,9 @@ Route::get('/settings', function () {
     return view('settings');
 })->name('settings');
 
+Route::get('/report', function(){
+    return view('report');
+})->name('report');
 
 Route::resource('products', ProductController::class)->only(['index', 'store', 'edit', 'update', 'destroy']);
 
