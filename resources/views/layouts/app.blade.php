@@ -46,6 +46,10 @@
 </head>
 <body>
     <div class="light-mode">
+    <script>
+            // Check if user is logged in
+            if (localStorage.getItem('loggedIn') === 'true') {
+                document.write(`
         <div class="margin">
             <nav class="sidebar close">
                 <header>
@@ -135,17 +139,29 @@
                 </div>
             </nav>
         </div>
+             `);
+            }
+        </script>
     </div>
-
+    
     <main class="container mt-4">
         @yield('content')
     </main>
+
+  
 
     <!-- JavaScript to Handle Sidebar Toggle and Dark Mode -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
+        function logout() {
+            // Clear login state
+            localStorage.removeItem('loggedIn');
+            // Redirect to login page
+            window.location.href = "{{ route('login') }}";
+        }
+        
         const body = document.querySelector('body'),
             sidebar = body.querySelector('nav'),
             toggle = body.querySelector(".toggle"),
