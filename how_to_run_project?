@@ -1,7 +1,0 @@
-step1: composer install
-step2: cp .env.example .env
-step3: php artisan key:generate
-step4: php artisan migrate
-step5: php artisan serve
-step6: php artisan db:seed -/optional : if you want default admin user run this... which email is in seeder file in code.
-
