@@ -1,0 +1,8 @@
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com --> smtp and gmail since we are using gamil
+MAIL_PORT=465
+MAIL_USERNAME=sugam.19217113@gmail.com -->your email
+MAIL_PASSWORD="zkcl psor dlmo xujx"  --> your password
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=sugam.19217113@gmail.com --> your email
+MAIL_FROM_NAME="${sales}}" --> app name 
