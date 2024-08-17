@@ -21,7 +21,7 @@
     }
 </style>
 
-<section class="customer py-2">
+<section class="customer">
     <div class="container">
         <!-- Display Error Messages -->
         @if ($errors->any())

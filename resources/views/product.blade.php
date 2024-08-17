@@ -86,7 +86,7 @@
 </style>
 
 
-<section class="product py-2">
+<section class="product py-4">
     <div class="container">
         <!-- Add New Product Form -->
         <div class="row justify-content-center">
