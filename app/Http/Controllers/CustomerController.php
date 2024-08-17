@@ -26,6 +26,7 @@ class CustomerController extends Controller
             'quantity' => 'required|integer|min:1',
             'payment' => 'required|string',
             'VAT' => 'required|numeric|min:0',
+            'MOU' => 'required|string',  // Added MOU validation
         ]);
 
         $product = Product::find($validatedData['product_id']);
@@ -58,6 +59,7 @@ class CustomerController extends Controller
             'quantity' => $quantity,
             'payment' => $validatedData['payment'],
             'VAT' => $VAT,
+            'MOU' => $validatedData['MOU'],  // Added MOU field
         ]);
 
         // Create new sale record

@@ -19,25 +19,20 @@ class AuthController extends Controller
     public function loginPost(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
+            "email" => "required|email",
+            "password" => "required",
         ]);
-
-        $credentials = $request->only('email', 'password');
-        
+    
+        $credentials = $request->only("email", "password");
+    
         if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-
-            if (!$user->hasVerifiedEmail()) {
-                Auth::logout();
-                return redirect(route('login'))
-                    ->with('error', 'Your email address is not verified. Please check your inbox.');
-            }
-
-            return redirect()->intended(route('home'));
+            // Check if the user's email is verified
+            
+                return redirect()->intended(route("home"));
+           
         }
-
-        return redirect(route('login'))->with('error', 'Login failed');
+    
+        return redirect(route("login"))->with("error","Login failed, please check your credentials.");
     }
 
     public function register()
@@ -50,34 +45,41 @@ class AuthController extends Controller
         $request->validate([
             'fullname' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|min:6',
         ]);
 
-        $user = User::create([
-            'name' => $request->fullname,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        $user = new User();
+        $user->name = $request->fullname;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
 
+        // Send email verification notification
         $user->sendEmailVerificationNotification();
 
-        return redirect(route('login'))->with('success', 'User created successfully. Please check your email to verify your account.');
+        // Redirect to the login page with a success message
+        return redirect()->route('login')->with('success', 'User created successfully. Please check your email to verify your account.');
     }
 
-    public function verify(Request $request)
+
+  public function verify(Request $request)
     {
         $user = User::find($request->route('id'));
-
-        if ($user && !$user->hasVerifiedEmail()) {
-            if ($user->markEmailAsVerified()) {
-                event(new Verified($user));
-            }
-
-            return redirect()->route('home')->with('message', 'Your email has been verified.');
+    
+        if ($user->hasVerifiedEmail()) {
+            return redirect()->route('home')->with('message', 'Your email is already verified.');
         }
-
-        return redirect()->route('home')->with('message', 'Invalid verification link or your email is already verified.');
+    
+        if ($user->markEmailAsVerified()) {
+            event(new Verified($user));
+        }
+    
+        return redirect()->route('home')->with('message', 'Your email has been verified.');
     }
+    
+    
+    
+
 
     public function resendVerificationEmail(Request $request)
     {

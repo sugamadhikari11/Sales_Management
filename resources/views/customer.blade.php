@@ -44,6 +44,7 @@
                                         <th scope="col">Address</th>
                                         <th scope="col">Product Purchased</th>
                                         <th scope="col">Quantity</th>
+                                        <th scope="col">MOU</th>
                                         <th scope="col">Payment Status</th>
                                         <th scope="col">VAT</th>
                                     </tr>
@@ -56,6 +57,7 @@
                                             <td>{{ $customer->address }}</td>
                                             <td>{{ $customer->product_name }}</td>
                                             <td>{{ $customer->quantity }}</td>
+                                            <td>{{ $customer->MOU }}</td>
                                             <td>{{ $customer->payment }}</td>
                                             <td>{{ $customer->VAT }}</td>
                                         </tr>
@@ -105,9 +107,23 @@
                                 <input type="number" id="quantity" name="quantity" class="form-control" required>
                             </div>
                             <div class="form-group mt-3">
-                                <label for="payment">Payment Status</label>
-                                <input type="text" id="payment" name="payment" class="form-control" required>
+                                <label for="MOU">MOU</label>
+                                <select id="MOU" name="MOU" class="form-control" required>
+                                    @foreach ($products as $product)
+                                        @if($product->exp_date >= now())
+                                            <option value="{{ $product->MOU }}">{{ $product->MOU }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
+                            <div class="form-group mt-3">
+                                <label for="payment">Payment Status</label>
+                                <select id="payment" name="payment" class="form-control" required>
+                                    <option value="Cash">Cash</option>
+                                    <option value="Credit">Credit</option>
+                                </select>
+                            </div>
+
                             <div class="form-group mt-3">
                                 <label for="VAT">VAT (%)</label>
                                 <input type="number" id="VAT" name="VAT" class="form-control" required>

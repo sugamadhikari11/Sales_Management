@@ -60,16 +60,18 @@
     <div class="container login-container">
         <div class="row justify-content-center">
             <div class="col-md-4">
-                @if(session()->has("success"))
-                    <div class="alert alert-success">
-                        {{session()->get("success")}}
-                    </div>
-                @endif
-                @if(session()->has("error"))
-                    <div class="alert alert-success">
-                        {{session()->get("error")}}
-                    </div>
-                @endif
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+
                 <div class="card login-card">
                     <div class="login-card-header">
                         Register

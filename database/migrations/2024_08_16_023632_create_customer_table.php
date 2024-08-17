@@ -17,6 +17,7 @@ class CreateCustomerTable extends Migration
             $table->integer('quantity');
             $table->string('payment');
             $table->decimal('VAT', 8, 2);
+            $table->string('MOU'); 
             $table->timestamps();
         });
     }
@@ -26,5 +27,3 @@ class CreateCustomerTable extends Migration
         Schema::dropIfExists('customers');
     }
 }
-
-	

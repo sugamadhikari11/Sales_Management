@@ -13,10 +13,12 @@ class Customer extends Model
         'customer_name',
         'PAN_VAT',
         'address',
-        'product_name',  // Use product_name
+        'product_name',
         'quantity',
         'payment',
         'VAT',
+        'MOU',
     ];
+    
 }
 
