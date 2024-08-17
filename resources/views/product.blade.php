@@ -16,7 +16,7 @@
     body {
         height: auto;
         background: linear-gradient(to right, #ff9b40, #709fff);
-        background-size: 100% 100vh;
+        background-size: cover;
         background-repeat: no-repeat;
     }
 
@@ -114,7 +114,7 @@
                                         <td><input type="text" name="BN" class="form-control" required></td>
                                         <td><input type="date" name="exp_date" class="form-control" required></td>
                                         <td><input type="number" name="Stock_Balance" class="form-control" required></td>
-                                        <td><input type="number" name="Rate" class="form-control" required></td>
+                                        <td><input type="double" name="Rate" class="form-control" required></td>
                                         <td><input type="text" name="MOU" class="form-control" required></td>
                                         <td><button type="submit" class="btn btn-primary">Add</button></td>
                                     </tr>

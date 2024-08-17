@@ -37,6 +37,10 @@
             margin: 0 auto;
         }
 
+        .navbar-nav .nav-item {
+            margin-left: 15px;
+        }
+
         .navbar-toggler {
             border-color: #0E73DB;
         }

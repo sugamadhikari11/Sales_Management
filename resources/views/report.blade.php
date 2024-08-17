@@ -16,7 +16,7 @@
     body {
         height: auto;
         background: linear-gradient(to right, #ff9b40, #709fff);
-        background-size: 100% 100vh;
+        background-size: cover;
         background-repeat: no-repeat;
     }
 
@@ -79,7 +79,7 @@
                     <td>{{ $sale->product->product_name }}</td>
                     <td>{{ $sale->customer->quantity }}</td>
                     <td>RS {{ $sale->amount }}</td>
-                    <td>{{ $sale->customer->VAT}}
+                    <td>RS {{ number_format($sale->total_amount - $sale->amount, 2) }}</td>
                     <td>RS {{ $sale->total_amount }}</td>
                     <td>{{ $sale->created_at->format('Y-m-d') }}</td>
                     <td>{{ $sale->remarks }}</td>

@@ -70,7 +70,7 @@
     body {
         height: auto;
         background: linear-gradient(to right, #ff9b40, #709fff);
-        background-size: 100% 100vh;
+        background-size: cover;
         background-repeat: no-repeat;
     }
 

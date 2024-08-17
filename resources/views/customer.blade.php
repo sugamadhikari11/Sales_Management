@@ -16,7 +16,7 @@
     body {
         height: auto;
         background: linear-gradient(to right, #ff9b40, #709fff);
-        background-size: 100% 100vh;
+        background-size: cover;
         background-repeat: no-repeat;
     }
 </style>
@@ -112,8 +112,11 @@
                                 <input type="number" id="quantity" name="quantity" class="form-control" required>
                             </div>
                             <div class="form-group mt-3">
-                                <label for="payment">Payment Status</label>
-                                <input type="text" id="payment" name="payment" class="form-control" required>
+                                <label for="payment">Payment</label>
+                                <select id="payment" name="payment" class="form-control" required>
+                                    <option value="cash">Cash</option>
+                                    <option value="credit">Credit</option>
+                                </select>
                             </div>
                             <div class="form-group mt-3">
                                 <label for="VAT">VAT (%)</label>
