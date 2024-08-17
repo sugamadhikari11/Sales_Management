@@ -12,6 +12,17 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'Georgia Pro Light';
+            src: url("{{ asset('public/fonts/GeorgiaPro-Light.ttf') }}") format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body, div, span, strong, form, label, input, a, button, .form-group, .alert-success, .card, .login-card-body {
+            font-family: 'Georgia Pro Light', serif;
+        }
+
         body {
             display: flex;
             justify-content: center;

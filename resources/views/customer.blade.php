@@ -12,16 +12,9 @@
     section, div, h5, tr, th, td, form, label, input, select, option, button {
         font-family: 'Georgia Pro Light', serif;
     }
-
-    body {
-        height: auto;
-        background: linear-gradient(to right, #ff9b40, #709fff);
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
 </style>
 
-<section class="customer">
+<section class="customer py-2">
     <div class="container">
         <!-- Display Error Messages -->
         @if ($errors->any())
@@ -51,6 +44,7 @@
                                         <th scope="col">Address</th>
                                         <th scope="col">Product Purchased</th>
                                         <th scope="col">Quantity</th>
+                                        <th scope="col">MOU</th>
                                         <th scope="col">Payment Status</th>
                                         <th scope="col">VAT</th>
                                     </tr>
@@ -63,6 +57,7 @@
                                             <td>{{ $customer->address }}</td>
                                             <td>{{ $customer->product_name }}</td>
                                             <td>{{ $customer->quantity }}</td>
+                                            <td>{{ $customer->MOU }}</td>
                                             <td>{{ $customer->payment }}</td>
                                             <td>{{ $customer->VAT }}</td>
                                         </tr>
@@ -112,12 +107,23 @@
                                 <input type="number" id="quantity" name="quantity" class="form-control" required>
                             </div>
                             <div class="form-group mt-3">
-                                <label for="payment">Payment</label>
-                                <select id="payment" name="payment" class="form-control" required>
-                                    <option value="cash">Cash</option>
-                                    <option value="credit">Credit</option>
+                                <label for="MOU">MOU</label>
+                                <select id="MOU" name="MOU" class="form-control" required>
+                                    @foreach ($products as $product)
+                                        @if($product->exp_date >= now())
+                                            <option value="{{ $product->MOU }}">{{ $product->MOU }}</option>
+                                        @endif
+                                    @endforeach
                                 </select>
                             </div>
+                            <div class="form-group mt-3">
+                                <label for="payment">Payment Status</label>
+                                <select id="payment" name="payment" class="form-control" required>
+                                    <option value="Cash">Cash</option>
+                                    <option value="Credit">Credit</option>
+                                </select>
+                            </div>
+
                             <div class="form-group mt-3">
                                 <label for="VAT">VAT (%)</label>
                                 <input type="number" id="VAT" name="VAT" class="form-control" required>

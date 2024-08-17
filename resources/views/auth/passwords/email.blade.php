@@ -3,6 +3,20 @@
 @section('title', 'Forgot Password')
 
 @section('content')
+
+<style>
+    @font-face {
+            font-family: 'Georgia Pro Light';
+            src: url("{{ asset('public/fonts/GeorgiaPro-Light.ttf') }}") format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body, div, p, form, label, input, button, span, strong {
+            font-family: 'Georgia Pro Light', serif;
+        }
+</style>
+
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">

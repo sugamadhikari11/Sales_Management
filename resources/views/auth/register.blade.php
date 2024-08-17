@@ -10,6 +10,16 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'Georgia Pro Light';
+            src: url("{{ asset('public/fonts/GeorgiaPro-Light.ttf') }}") format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body, div, span, strong, form, label, input, a, button {
+            font-family: 'Georgia Pro Light', serif;
+        }
         body {
             background: #f7f7f7;
             display: flex;
@@ -60,16 +70,18 @@
     <div class="container login-container">
         <div class="row justify-content-center">
             <div class="col-md-4">
-                @if(session()->has("success"))
-                    <div class="alert alert-success">
-                        {{session()->get("success")}}
-                    </div>
-                @endif
-                @if(session()->has("error"))
-                    <div class="alert alert-success">
-                        {{session()->get("error")}}
-                    </div>
-                @endif
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+
                 <div class="card login-card">
                     <div class="login-card-header">
                         Register
